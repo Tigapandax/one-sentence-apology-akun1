@@ -20,6 +20,9 @@ if (line !== line.trim()) {
 if (line.includes("\n") || line.includes("\r")) {
   throw new Error("entry must be a single line");
 }
+if (line.includes("\t") || /  /.test(line)) {
+  throw new Error("entry must not contain tabs or double spaces");
+}
 if (!/[.!?]$/.test(line)) {
   throw new Error("entry must be a single sentence ending in . ! or ?");
 }
